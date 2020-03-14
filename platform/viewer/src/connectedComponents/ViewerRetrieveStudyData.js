@@ -105,7 +105,7 @@ const _showUserMessage = (queryParamApplied, message, dialog = {}) => {
     return;
   }
 
-  const { show: showUserMessage = () => { } } = dialog;
+  const { show: showUserMessage = () => {} } = dialog;
   showUserMessage({
     message,
   });
@@ -321,7 +321,10 @@ function ViewerRetrieveStudyData({
   const prevStudyInstanceUids = usePrevious(studyInstanceUids);
 
   useEffect(() => {
-    const hasStudyInstanceUidsChanged = !(prevStudyInstanceUids && prevStudyInstanceUids.every(e => studyInstanceUids.includes(e)));
+    const hasStudyInstanceUidsChanged = !(
+      prevStudyInstanceUids &&
+      prevStudyInstanceUids.every(e => studyInstanceUids.includes(e))
+    );
 
     if (hasStudyInstanceUidsChanged) {
       studyMetadataManager.purge();

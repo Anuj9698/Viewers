@@ -94,9 +94,19 @@ function Header(props) {
             </Link>
           )}
         </div>
-
         <div className="header-menu">
-          <span className="research-use">{t('INVESTIGATIONAL USE ONLY')}</span>
+          {/* <span className="research-use">{t('INVESTIGATIONAL USE ONLY')}</span> */}
+          <span>
+            <Link
+              className="header-btn header-studyListLinkSection"
+              to={{
+                pathname: '/patient_listing',
+                state: { patientlist: location.pathname },
+              }}
+            >
+              <button>{t('Patient List')}</button>
+            </Link>
+          </span>
           <Dropdown title={t('Options')} list={options} align="right" />
         </div>
       </div>

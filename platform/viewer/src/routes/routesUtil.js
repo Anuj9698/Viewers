@@ -1,6 +1,9 @@
 import asyncComponent from '../components/AsyncComponent.js';
 
 import OHIF from '@ohif/core';
+import CreateUser from './Createuser.js';
+import UpdateUser from './UpdateUser';
+import PatientList from './PatientList';
 const { urlUtil: UrlUtil } = OHIF.utils;
 
 // Dynamic Import Routes (CodeSplitting)
@@ -13,13 +16,19 @@ const ViewerRouting = asyncComponent(() =>
   import(/* webpackChunkName: "ViewerRouting" */ './ViewerRouting.js')
 );
 
+// const CreateUser = asyncComponent(() =>
+//   import(/* webpackChunkName: "ViewerRouting" */ './CreateUser.js')
+// );
+
 const StudyListRouting = asyncComponent(() =>
   import(
     /* webpackChunkName: "StudyListRouting" */ '../studylist/StudyListRouting.js'
   )
 );
 const StandaloneRouting = asyncComponent(() =>
-  import(/* webpackChunkName: "ConnectedStandaloneRouting" */ '../connectedComponents/ConnectedStandaloneRouting.js')
+  import(
+    /* webpackChunkName: "ConnectedStandaloneRouting" */ '../connectedComponents/ConnectedStandaloneRouting.js'
+  )
 );
 const ViewerLocalFileData = asyncComponent(() =>
   import(
@@ -34,6 +43,18 @@ const ROUTES_DEF = {
     viewer: {
       path: '/viewer/:studyInstanceUids',
       component: ViewerRouting,
+    },
+    createuser: {
+      path: '/createuser',
+      component: CreateUser,
+    },
+    updateuser: {
+      path: '/updateuser',
+      component: UpdateUser,
+    },
+    patientlist: {
+      path: '/patient_listing',
+      component: PatientList,
     },
     standaloneViewer: {
       path: '/viewer',

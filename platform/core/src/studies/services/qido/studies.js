@@ -33,7 +33,7 @@ function getQIDOQueryParams(filter, serverSupportsQIDOIncludeField) {
     '00080060', // Modality
     // Add more fields here if you want them in the result
   ].join(',');
-
+  console.log(filter);
   const parameters = {
     PatientName: filter.patientName,
     PatientID: filter.patientId,
@@ -68,7 +68,7 @@ function getQIDOQueryParams(filter, serverSupportsQIDOIncludeField) {
       params[key] = parameters[key];
     }
   });
-
+  console.log(params);
   return params;
 }
 
@@ -80,7 +80,7 @@ function getQIDOQueryParams(filter, serverSupportsQIDOIncludeField) {
  */
 function resultDataToStudies(resultData) {
   const studies = [];
-
+  console.log(resultData);
   if (!resultData || !resultData.length) return;
 
   resultData.forEach(study =>
@@ -112,6 +112,7 @@ function resultDataToStudies(resultData) {
 }
 
 export default function Studies(server, filter) {
+  // console.warn(filter.limit + 'hello');
   const config = {
     url: server.qidoRoot,
     headers: DICOMWeb.getAuthorizationHeader(server),

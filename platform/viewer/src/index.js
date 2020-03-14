@@ -8,7 +8,7 @@ import 'regenerator-runtime/runtime';
 import App from './App.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import 'bootstrap/dist/css/bootstrap.css';
 /**
  * EXTENSIONS
  * =================
